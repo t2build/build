@@ -1,0 +1,33 @@
+
+<form #f="ngForm">
+
+  <h2>Manage Deployment</h2>
+  <br/>
+
+  <!-- <button class="btn btn-primary btn-right-space bg-dark"
+  (click)="removeAllProjectsFromDeployment()">Delete All</button> -->
+  <br/>
+  <br/>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Display Name
+        </th>
+        <th>Deploy Name
+        </th>
+        <th>Action
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of deployment$ | async">
+          <td>{{ project.displayName }}</td>
+          <td id="deployName">{{ project.deployName }}</td>
+        <td id="deleteButton">
+            <button class="btn btn-primary btn-right-space bg-dark"
+            (click)="removeProjectFromDeployment(project)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>

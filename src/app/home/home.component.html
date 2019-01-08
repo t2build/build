@@ -1,0 +1,19 @@
+
+
+<h2>T2 Deploy</h2>
+<br/>
+<br/>
+<br/>
+<ng-multiselect-dropdown
+  [placeholder]="'Please select projects to deploy'"
+  [data]="projects$ | async"
+  [(ngModel)]="selectedItems"
+  [settings]="dropdownSettings"
+>
+</ng-multiselect-dropdown>
+
+<br/>
+
+<button type="button" class="btn btn-primary btn-right-space bg-dark" (click)= "addProjectsToDeploy()">Submit</button>
+<button type="button" (click)= "upVote()">Up</button>
+<button type="button" (click)= "downVote()">Down</button>

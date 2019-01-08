@@ -1,0 +1,58 @@
+
+<form #f="ngForm" [formGroup]="form">
+
+        <h2>Manage Projects</h2>
+        <br/>
+        <br/>
+        <br/>
+        <div *ngIf="(form.get('displayName').errors?.buttonClick) && form.get('displayName').invalid" class="alert alert-danger" >
+            <div *ngIf="form.get('displayName').errors">Enter Valid Display Name</div>
+        </div>
+        <div *ngIf="(form.get('deployName').errors?.buttonClick) && form.get('deployName').invalid" class="alert alert-danger" >
+            <div *ngIf="form.get('deployName').errors">Enter Valid Deploy Name</div>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Display Name
+                <br/>
+                <br/>
+                <input
+            formControlName="displayName"
+            id="displayName"
+            type="text"
+            placeholder="enter display name"
+            class="form-control">
+              </th>
+              <th>Deploy Name
+                <br/>
+                <br/>
+                <input
+            formControlName="deployName"
+            id="deployName"
+            placeholder="enter deploy name"
+            type="text"
+            class="form-control">
+
+              </th>
+              <th>Action
+                  <br/>
+                  <br/>
+                  <button class="btn btn-primary btn-right-space bg-dark" (click)="addNewProject()">
+                      Add
+                    </button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let project of deployment$ | async">
+                <td>{{ project.displayName }}</td>
+                <td>{{ project.deployName }}</td>
+              <td>
+                  <button class="btn btn-primary btn-right-space bg-dark"
+                  (click)="removeProjectFromDeployment(project)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
